@@ -1,13 +1,3 @@
-<!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
--->
-
 <template>
   <div class="cart-box">
     <s-header :name="'购物车'" :noback="true"></s-header>
@@ -37,7 +27,7 @@
             </div>
           </div>
           <template #right>
-            <van-button
+            <el-button
               square
               icon="delete"
               type="danger"
@@ -60,7 +50,7 @@
     <div class="empty" v-if="!list.length">
       <img class="empty-cart" src="https://s.yezgea02.com/1604028375097/empty-car.png" alt="空购物车">
       <div class="title">购物车空空如也</div>
-      <van-button round color="#1baeae" type="primary" @click="goTo" block>前往选购</van-button>
+      <el-button round color="#1baeae" type="primary" @click="goTo" block>前往选购</el-button>
     </div>
     <nav-bar></nav-bar>
   </div>

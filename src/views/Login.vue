@@ -42,7 +42,7 @@
         </van-field>
         <div style="margin: 16px;">
           <div class="link-register" @click="toggle('register')">立即注册</div>
-          <van-button round block color="#1baeae" native-type="submit">登录</van-button>
+          <el-button type="primary" native-type="submit">登录</el-button>
         </div>
       </van-form>
     </div>
@@ -76,7 +76,7 @@
         </van-field>
         <div style="margin: 16px;">
           <div class="link-login" @click="toggle('login')">已有登录账号</div>
-          <van-button round block color="#1baeae" native-type="submit">注册</van-button>
+          <el-button type="primary" round block color="#1baeae" native-type="submit">注册</el-button>
         </div>
       </van-form>
     </div>

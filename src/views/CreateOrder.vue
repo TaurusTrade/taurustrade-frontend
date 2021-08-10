@@ -1,13 +1,3 @@
-<!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
--->
-
 <template>
   <div class="create-order">
     <s-header :name="'生成订单'" @callback="deleteLocal"></s-header>
@@ -40,7 +30,7 @@
         <span>商品金额</span>
         <span>¥{{ total }}</span>
       </div>
-      <van-button @click="handleCreateOrder" class="pay-btn" color="#1baeae" type="primary" block>生成订单</van-button>
+      <el-button @click="handleCreateOrder" class="pay-btn" color="#1baeae" type="primary" block>生成订单</el-button>
     </div>
     <van-popup
       closeable
@@ -51,8 +41,8 @@
       @close="close"
     >
       <div :style="{ width: '90%', margin: '0 auto', padding: '50px 0' }">
-        <van-button :style="{ marginBottom: '10px' }" color="#1989fa" block @click="handlePayOrder(1)">支付宝支付</van-button>
-        <van-button color="#4fc08d" block @click="handlePayOrder(2)">微信支付</van-button>
+        <el-button :style="{ marginBottom: '10px' }" color="#1989fa" block @click="handlePayOrder(1)">支付宝支付</el-button>
+        <el-button color="#4fc08d" block @click="handlePayOrder(2)">微信支付</el-button>
       </div>
     </van-popup>
   </div>

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
-import { ActionBar, ActionBarIcon, ActionBarButton, Divider, Popup, Overlay, Loading, Dialog, ContactCard, Form, AddressEdit, AddressList, Field, CellGroup, Cell, SwipeCell, Icon, Stepper, Card, Checkbox, CheckboxGroup, Button, Swipe, SwipeItem, PullRefresh, List, Tab, Tabs, SubmitBar, Toast, Skeleton } from 'vant'
+import { ActionBar, ActionBarIcon, ActionBarButton, Divider, Popup, Overlay, Loading, Dialog, ContactCard, Form, AddressEdit, AddressList, Field, CellGroup, Cell, SwipeCell, Icon, Stepper, Card, Checkbox, CheckboxGroup, Swipe, SwipeItem, PullRefresh, List, Tab, Tabs, SubmitBar, Toast, Skeleton } from 'vant'
 
-import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
+import ElementPlus from 'element-plus'
 
 import App from './App.vue'
 import store from './store'
@@ -9,9 +9,7 @@ import router from './router'
 import 'lib-flexible/flexible'
 
 //import 'vant/lib/index.css'; // 全局引入样式
-import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
-
+import 'element-plus/lib/theme-chalk/index.css'
 
 
 const app = createApp(App) // 创建实例
@@ -28,6 +26,10 @@ app.config.globalProperties.$filters = {
   }
 }
 
+// element-plus UI components
+app.use(ElementPlus)
+
+// vant UI compants
 app.use(ActionBarButton)
   .use(ActionBarIcon)
   .use(ActionBar)
@@ -47,8 +49,7 @@ app.use(ActionBarButton)
   .use(SwipeCell)
   .use(Icon)
   .use(Stepper)
-  .use(Card)
-  .use(Button)
+  .use(Card)  
   .use(Swipe)
   .use(SwipeItem)
   .use(PullRefresh)
