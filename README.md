@@ -1,144 +1,134 @@
-![](static-files/newbee-mall.png)
+# vue-manage-system
 
-- [知乎：如何看待慕课网涉嫌抄袭开源项目作为《Java工程师》的终极项目并上线销售？](https://www.zhihu.com/question/464292538)
-- [《newbee-mall开源项目被慕课网拿去做课程，然后我毫不知情，这又是什么骚操作？》](https://mp.weixin.qq.com/s/xEk-y9HA8RxJWMplpTQ1MQ)
-- [《起诉书！慕课网你敢抄袭，我就敢起诉你！》](https://mp.weixin.qq.com/s/oXr6O7u7vqQQi8mzTkoTDg)
-- [《花费3680元买了一个慕课网的Java就业班课程，里面竟然有自己写的开源项目！》](https://mp.weixin.qq.com/s/TLZbAEjRi0YT1t8xoFv4dQ)
-- [《newbee-mall开源项目被慕课网拿去做课程，讲师已道歉，课程却还在售卖》](https://mp.weixin.qq.com/s/sue5JyZcysFRNFTxUnZiIQ)
-- [《可笑！慕课网涉嫌抄袭开源项目至今没有道歉，而且在偷偷的“毁尸灭迹”》](https://mp.weixin.qq.com/s/UTsA5WOFPH4UUf5rEj2HpQ)
-- [《最新证据：代码相似度达到90%以上！再谈慕课网涉嫌抄袭事件》](https://mp.weixin.qq.com/s/myejz9icB55wfdHEFNvrBw)
-- [《newbee-mall开源项目被慕课网拿去做课程，项目详细对比记录，更多实锤看这里》](https://mp.weixin.qq.com/s/JTt0r_t8qhfUwkhpdUjrTg)
-- [《一个被慕课网拿去做Java就业班终极项目的开源商城项目，推荐给大家》](https://mp.weixin.qq.com/s/BKIETwgEPBprWYhQZJDLIA)
+<a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
+  </a>
+  <a href="https://github.com/ElemeFE/element">
+    <img src="https://img.shields.io/badge/element--ui-2.8.2-brightgreen.svg" alt="element-ui">
+  </a>
+  <a href="https://github.com/lin-xin/vue-manage-system/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+  </a>
+  <a href="https://github.com/lin-xin/vue-manage-system/releases">
+    <img src="https://img.shields.io/github/release/lin-xin/vue-manage-system.svg" alt="GitHub release">
+  </a>
+  <a href="https://lin-xin.gitee.io/example/work/#/donate">
+    <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg" alt="donate">
+  </a>
 
-![Build Status](https://img.shields.io/badge/build-passing-green.svg)
-![Version 3.0.0](https://img.shields.io/badge/version-3.0.0-yellow.svg)
-[![License](https://img.shields.io/badge/license-GPL3.0-blue.svg)](https://github.com/newbee-ltd/newbee-mall-vue3-app/blob/master/LICENSE)
+基于 Vue3 + Element Plus 的后台管理系统解决方案。[线上地址](https://lin-xin.gitee.io/example/work/)
 
-newbee-mall 项目是一套电商系统，包括 newbee-mall 商城系统及 newbee-mall-admin 商城后台管理系统，基于 Spring Boot 2.X 和 Vue 以及相关技术栈开发。 前台商城系统包含首页门户、商品分类、新品上线、首页轮播、商品推荐、商品搜索、商品展示、购物车、订单结算、订单流程、个人订单管理、会员中心、帮助中心等模块。 后台管理系统包含数据面板、轮播图管理、商品管理、订单管理、会员管理、分类管理、设置等模块。
+> Vue2 版本请看 [tag-V4.2.0](https://github.com/lin-xin/vue-manage-system/tree/V4.2.0)
 
-本仓库中的源码为新蜂商城前后端分离版本的 Vue 项目（Vue 版本为 3.x），主要面向前端开发人员，后端 API 源码在另外一个仓库 [newbee-mall-api](https://github.com/newbee-ltd/newbee-mall-api)。
+[English document](https://github.com/lin-xin/manage-system/blob/master/README_EN.md)
 
-新蜂商城 Vue3 版本线上预览地址：[http://vue3-app.newbee.ltd](http://47.99.134.126:5008)，账号可自行注册，建议使用手机模式打开。
+## 项目截图
 
-前后端分离版本包括四个仓库：
+### 登录
 
-- [新蜂商城后端接口 newbee-mall-api](https://github.com/newbee-ltd/newbee-mall-api)
-- [新蜂商城 Vue2 版本 newbee-mall-vue-app](https://github.com/newbee-ltd/newbee-mall-vue-app)
-- [新蜂商城 Vue3 版本 newbee-mall-vue3-app](https://github.com/newbee-ltd/newbee-mall-vue3-app)
-- [新蜂商城后台管理系统 Vue3 版本 vue3-admin](https://github.com/newbee-ltd/vue3-admin)
+![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms3.png)
 
->Vue2 版本与 Vue3 版本分成两个仓库，大家需要哪个版本就去对应的仓库即可。
+### 首页
 
-**坚持不易，如果觉得项目还不错的话可以给项目一个 Star 吧，也是对我一直更新代码的一种鼓励啦，谢谢各位的支持。**
+![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms1.png)
 
-![newbee-mall-info](https://newbee-mall.oss-cn-beijing.aliyuncs.com/poster/store/newbee-mall-star.png)
+## 赞赏
 
-关注公众号：**程序员十三**，回复"勾搭"进群交流。
+请作者喝杯咖啡吧！(微信号：linxin_20)
 
-![wx-gzh](https://newbee-mall.oss-cn-beijing.aliyuncs.com/wx-gzh/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%8D%81%E4%B8%89-%E5%85%AC%E4%BC%97%E5%8F%B7.png)
+![微信扫一扫](https://lin-xin.gitee.io/images/weixin.jpg)
 
-## 开发及部署文档
+## 前言
 
-- [向“全栈”进发！大型线上商城实战项目，Spring Boot + Vue 前后端分离版本的商城来了！](https://juejin.im/book/6844733826191589390)
-- [项目须知和课程约定](https://juejin.im/book/6844733826191589390)
-- [全栈开发！你必须要知道的“前后端分离”](https://juejin.im/book/6844733826191589390)
-- [前端模块化的发展历史](https://juejin.im/book/6844733826191589390)
-- [传统页面和单页面的权衡与抉择](https://juejin.im/book/6844733826191589390)
-- [准备工作及基础环境搭建（后端）](https://juejin.im/book/6844733826191589390)
-- [Spring Boot 项目初体验--项目搭建及启动](https://juejin.im/book/6844733826191589390)
-- [项目编码简化利器！Spring Boot 整合 Lombok](https://juejin.im/book/6844733826191589390)
-- [Lombok 插件问题处理](https://juejin.im/book/6844733826191589390)
-- [商城后端项目启动和运行注意事项](https://juejin.im/book/6844733826191589390)
-- [VSCode 的相关配置及插件介绍](https://juejin.im/book/6844733826191589390)
-- [基础篇：Vue 指令](https://juejin.im/book/6844733826191589390)
-- [基础篇：Vue全局API及生命周期介绍](https://juejin.im/book/6844733826191589390)
-- [基础篇: CSS 预处理工具Less的介绍及使用](https://juejin.im/book/6844733826191589390)
-- [Vue 脚手架工具 Vue-Cli 配置介绍](https://juejin.im/book/6844733826191589390)
-- [Vue-Router 浅析原理及使用](https://juejin.im/book/6844733826191589390)
-- [全局状态管理插件 Vuex 介绍及使用](https://juejin.im/book/6844733826191589390)
-- [商城前端 H5 开发环境搭建及项目启动](https://juejin.im/book/6844733826191589390)
-- [前后端交互文档利器！Spring Boot 整合 Swagger](https://juejin.im/book/6844733826191589390)
-- [接口参数处理和统一响应结果](https://juejin.im/book/6844733826191589390)
-- [口设计规范及接口调用实践](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-用户登录接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-用户身份认证详解](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-首页模块接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-分类模块接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-商品搜索模块接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-购物车模块接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-个人信息及收货地址接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-下单流程接口开发](https://juejin.im/book/6844733826191589390)
-- [商城开发实战-订单处理流程详解](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-新蜂商城底部导航(抽离公共组件)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-新蜂商城登录注册页(前端鉴权)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-商城首页制作(轮播图、首页商品列表)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-商品分类页面制作(better-scrol的介绍及使用)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-商品列表页面制作(无限滚动加载)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-商品详情页面制作(Vuex 购物车数量全局管理)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-商城购物车页面制作(购物车页)](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-确认订单页面制作](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-地址栏管理页面制作](https://juejin.im/book/6844733826191589390)
-- [商城移动端开发实战-我的订单页面制作](https://juejin.im/book/6844733826191589390)
-- [Vue 3.x 新特性概览](https://juejin.im/book/6844733826191589390)
-- [新蜂商城迁移至 Vue 3.x 流程讲解](https://juejin.im/book/6844733826191589390)
+该方案作为一套多功能的后台框架模板，适用于绝大部分的后台管理系统（Web Management System）开发。基于 Vue3，使用 vue-cli3 脚手架，引用 Element Plus 组件库，方便开发快速简洁好看的组件。分离颜色样式，支持手动切换主题色，而且很方便使用自定义主题色。
 
-## 联系作者
+## 功能
 
-> 大家有任何问题或者建议都可以在 [issues](https://github.com/newbee-ltd/newbee-mall-vue3-app/issues) 中反馈给我，我会慢慢完善这个项目。
+-   [x] Element Plus
+-   [x] 登录/注销
+-   [x] Dashboard
+-   [x] 表格
+-   [x] Tab 选项卡
+-   [x] 表单
+-   [x] 图表 :bar_chart:
+-   [x] 富文本编辑器
+-   [x] 图片拖拽/裁剪上传
+-   [x] 权限测试
+-   [x] 404 / 403
+-   [x] 三级菜单
+-   [x] 自定义图标
+-   [x] 国际化
 
-- 我的邮箱：2449207463@qq.com
-- QQ技术交流群：932227898
+## 安装步骤
 
-## 软件著作权
+```
+git clone https://github.com/lin-xin/vue-manage-system.git      // 把模板下载到本地
+cd vue-manage-system    // 进入模板目录
+npm install         // 安装项目依赖，等待安装完成之后，安装失败可用 cnpm 或 yarn
 
->本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
+// 开启服务器，浏览器访问 http://localhost:8080
+npm run dev
 
-![](https://newbee-mall.oss-cn-beijing.aliyuncs.com/poster/store/newbee-mall-copyright-02.png)
+// 执行构建命令，生成的dist文件夹放在服务器下即可访问
+npm run build
+```
 
-## 页面展示
+## 组件使用说明与演示
 
-以下为新蜂商城 Vue3 版本的页面预览：
+### vue-schart
 
-- 登录页
+vue.js 封装 sChart.js 的图表组件。访问地址：[vue-schart](https://github.com/linxin/vue-schart)
 
-![](static-files/登录.png)
+<p><a href="https://www.npmjs.com/package/vue-schart"><img src="https://img.shields.io/npm/dm/vue-schart.svg" alt="Downloads"></a></p>
 
-- 首页
+```html
+<template>
+    <div>
+        <schart class="wrapper" canvasId="myCanvas" :options="options"></schart>
+    </div>
+</template>
 
-![](static-files/首页.png)
+<script>
+    import Schart from "vue-schart"; // 导入Schart组件
+    export default {
+        data() {
+            return {
+                options: {
+                    type: "bar",
+                    title: {
+                        text: "最近一周各品类销售图",
+                    },
+                    labels: ["周一", "周二", "周三", "周四", "周五"],
+                    datasets: [
+                        {
+                            label: "家电",
+                            data: [234, 278, 270, 190, 230],
+                        },
+                        {
+                            label: "百货",
+                            data: [164, 178, 190, 135, 160],
+                        },
+                        {
+                            label: "食品",
+                            data: [144, 198, 150, 235, 120],
+                        },
+                    ],
+                },
+            };
+        },
+        components: {
+            Schart,
+        },
+    };
+</script>
+<style>
+    .wrapper {
+        width: 7rem;
+        height: 5rem;
+    }
+</style>
+```
 
-- 商品搜索
+## License
 
-![](static-files/商品搜索.png)
-
-- 商品详情页
-
-![](static-files/详情页.png)
-
-- 购物车
-
-![](static-files/购物车.png)
-
-- 生成订单
-
-![](static-files/生成订单.png)
-
-- 地址管理
-
-![](static-files/地址管理.png)
-
-- 订单列表
-
-![](static-files/订单列表.png)
-
-- 订单详情
-
-![](static-files/订单详情.png)
-
-## 感谢
-
-- [Vue](https://github.com/vuejs/vue)
-- [Vue-Router](https://github.com/vuejs/vue-router-next)
-- [Vuex](https://github.com/vuejs/vuex/tree/4.0)
-- [Vant](https://github.com/youzan/vant)
-- [better-scroll](https://github.com/ustbhuangyi/better-scroll)
+[MIT](https://github.com/lin-xin/vue-manage-system/blob/master/LICENSE)

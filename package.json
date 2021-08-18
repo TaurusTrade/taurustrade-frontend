@@ -1,11 +1,11 @@
 {
-  "name": "newbee-mall-vue3-app",
-  "version": "0.1.0",
+  "name": "vue-manage-system",
+  "version": "5.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "serve": "vite preview",
+    "build": "vite build",
+    "dev": "vite",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
@@ -13,49 +13,24 @@
   },
   "main": "background.js",
   "dependencies": {
-    "axios": "^0.20.0",
-    "better-scroll": "^2.3.0",
-    "core-js": "^3.6.5",
-    "element-plus": "^1.0.2-beta.70",
-    "js-md5": "^0.7.3",
-    "lib-flexible": "^0.3.2",
-    "pushstate-server": "^3.1.0",
-    "vant": "^3.0.0-beta.5",
-    "vue": "^3.0.0",
-    "vue-material": "^1.0.0-beta-15",
-    "vue-router": "^4.0.0-beta.13",
-    "vue2-verify": "^1.1.5",
-    "vuex": "^4.0.0-beta.4"
+    "axios": "^0.21.1",
+    "element-plus": "1.0.2-beta.52",
+    "vue": "^3.1.2",
+    "vue-cropperjs": "^5.0.0",
+    "vue-grid-layout": "^2.3.12",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.10",
+    "vue-schart": "^2.0.0",
+    "vuex": "^4.0.2",
+    "wangeditor": "^4.7.4"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-import": "^1.13.1",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.1.2",
     "electron": "^13.0.0",
     "electron-devtools-installer": "^3.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "less": "^3.12.2",
-    "less-loader": "^7.0.2",
-    "postcss-pxtorem": "^5.1.1",
+    "vite": "2.3.7",
     "vue-cli-plugin-electron-builder": "~2.1.1"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

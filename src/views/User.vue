@@ -1,170 +1,192 @@
-<!--
- * 严肃声明：
- * 开源版本请务必保留此注释头信息，若删除我方将保留所有法律责任追究！
- * 本系统已申请软件著作权，受国家版权局知识产权以及国家计算机软件著作权保护！
- * 可正常分享和学习源码，不得用于违法犯罪活动，违者必究！
- * Copyright (c) 2020 陈尼克 all rights reserved.
- * 版权所有，侵权必究！
- *
--->
-
 <template>
-  <div class="user-box">
-    <s-header :name="'我的'"></s-header>
-    <van-skeleton title :avatar="true" :row="3" :loading="loading">
-      <div class="user-info">
-        <div class="info">
-          <img src="https://s.yezgea02.com/1604040746310/aaaddd.png"/>
-          <div class="user-desc">
-            <span>昵称：{{ user.nickName }}</span>
-            <span>登录名：{{ user.loginName }}</span>
-            <span class="name">个性签名：{{ user.introduceSign }}</span>
-          </div>
-        </div>
-      </div>
-    </van-skeleton>
-    <ul class="user-list">
-      <li class="van-hairline--bottom" @click="goTo('/order')">
-        <span>我的订单</span>
-        <van-icon name="arrow" />
-      </li>
-      <li class="van-hairline--bottom" @click="goTo('/setting')">
-        <span>账号管理</span>
-        <van-icon name="arrow" />
-      </li>
-      <li class="van-hairline--bottom" @click="goTo('/address', { from: 'mine' })">
-        <span>地址管理</span>
-        <van-icon name="arrow" />
-      </li>
-      <li @click="goTo('/about')">
-        <span>关于我们</span>
-        <van-icon name="arrow" />
-      </li>
-    </ul>
-    <nav-bar></nav-bar>
-  </div>
+    <div>
+        <el-row :gutter="20">
+            <el-col :span="12">
+                <el-card shadow="hover">
+                    <template #header>
+                        <div class="clearfix">
+                            <span>基础信息</span>
+                        </div>
+                    </template>
+                    <div class="info">
+                        <div class="info-image" @click="showDialog">
+                            <img :src="avatarImg" />
+                            <span class="info-edit">
+                                <i class="el-icon-lx-camerafill"></i>
+                            </span>
+                        </div>
+                        <div class="info-name">{{ name }}</div>
+                        <div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :span="12">
+                <el-card shadow="hover">
+                    <template #header>
+                        <div class="clearfix">
+                            <span>账户编辑</span>
+                        </div>
+                    </template>
+                    <el-form label-width="90px">
+                        <el-form-item label="用户名："> {{ name }} </el-form-item>
+                        <el-form-item label="旧密码：">
+                            <el-input type="password" v-model="form.old"></el-input>
+                        </el-form-item>
+                        <el-form-item label="新密码：">
+                            <el-input type="password" v-model="form.new"></el-input>
+                        </el-form-item>
+                        <el-form-item label="个人简介：">
+                            <el-input v-model="form.desc"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="onSubmit">保存</el-button>
+                        </el-form-item>
+                    </el-form>
+                </el-card>
+            </el-col>
+        </el-row>
+        <el-dialog title="裁剪图片" v-model="dialogVisible" width="600px">
+            <vue-cropper ref="cropper" :src="imgSrc" :ready="cropImage" :zoom="cropImage" :cropmove="cropImage"
+                style="width: 100%; height: 400px"></vue-cropper>
+
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button class="crop-demo-btn" type="primary">选择图片
+                        <input class="crop-input" type="file" name="image" accept="image/*" @change="setImage" />
+                    </el-button>
+                    <el-button type="primary" @click="saveAvatar">上传并保存</el-button>
+                </span>
+            </template>
+        </el-dialog>
+    </div>
 </template>
 
 <script>
-import { reactive, onMounted, toRefs } from 'vue'
-import navBar from '@/components/NavBar'
-import sHeader from '@/components/SimpleHeader'
-import { getUserInfo } from '@/service/user'
-import { useRouter } from 'vue-router'
+import { reactive, ref } from "vue";
+import VueCropper from "vue-cropperjs";
+import "cropperjs/dist/cropper.css";
+import avatar from "../assets/img/img.jpg";
 export default {
-  components: {
-    navBar,
-    sHeader
-  },
-  setup() {
-    const router = useRouter()
-    const state = reactive({
-      user: {},
-      loading: true
-    })
+    name: "user",
+    components: {
+        VueCropper,
+    },
+    setup() {
+        const name = localStorage.getItem("ms_username");
+        const form = reactive({
+            old: "",
+            new: "",
+            desc: "不可能！我的代码怎么可能会有bug！",
+        });
+        const onSubmit = () => {};
 
-    onMounted(async () => {
-      const { data } = await getUserInfo()
-      state.user = data
-      state.loading = false
-    })
+        const avatarImg = ref(avatar);
+        const imgSrc = ref("");
+        const cropImg = ref("");
+        const dialogVisible = ref(false);
+        const cropper = ref(null);
 
-    const goBack = () => {
-      router.go(-1)
-    }
+        const showDialog = () => {
+            dialogVisible.value = true;
+            imgSrc.value = avatarImg.value;
+        };
 
-    const goTo = (r, query) => {
-      router.push({ path: r, query: query || {} })
-    }
+        const setImage = (e) => {
+            const file = e.target.files[0];
+            if (!file.type.includes("image/")) {
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                dialogVisible.value = true;
+                imgSrc.value = event.target.result;
+                cropper.value && cropper.value.replace(event.target.result);
+            };
+            reader.readAsDataURL(file);
+        };
 
-    return {
-      ...toRefs(state),
-      goBack,
-      goTo
-    }
-  }
-}
+        const cropImage = () => {
+            cropImg.value = cropper.value.getCroppedCanvas().toDataURL();
+        };
+
+        const saveAvatar = () => {
+            avatarImg.value = cropImg.value;
+            dialogVisible.value = false;
+        };
+
+        return {
+            name,
+            form,
+            onSubmit,
+            cropper,
+            avatarImg,
+            imgSrc,
+            cropImg,
+            showDialog,
+            dialogVisible,
+            setImage,
+            cropImage,
+            saveAvatar,
+        };
+    },
+};
 </script>
 
-<style lang="less" scoped>
-  @import '../common/style/mixin';
-  .user-box {
-    .user-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10000;
-      .fj();
-      .wh(100%, 44px);
-      line-height: 44px;
-      padding: 0 10px;
-      .boxSizing();
-      color: #252525;
-      background: #fff;
-      border-bottom: 1px solid #dcdcdc;
-      .user-name {
-        font-size: 14px;
-      }
-    }
-    .user-info {
-      width: 94%;
-      margin: 10px;
-      height: 115px;
-      background: linear-gradient(90deg, @primary, #51c7c7);
-      box-shadow: 0 2px 5px #269090;
-      border-radius: 6px;
-      .info {
-        position: relative;
-        display: flex;
-        width: 100%;
-        height: 100%;
-        padding: 25px 20px;
-        .boxSizing();
-        img {
-          .wh(60px, 60px);
-          border-radius: 50%;
-          margin-top: 4px;
-        }
-        .user-desc {
-          display: flex;
-          flex-direction: column;
-          margin-left: 10px;
-          line-height: 20px;
-          font-size: 14px;
-          color: #fff;
-          span {
-            color: #fff;
-            font-size: 14px;
-            padding: 2px 0;
-          }
-        }
-        .account-setting {
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          font-size: 13px;
-          color: #fff;
-          .van-icon-setting-o {
-            font-size: 16px;
-            vertical-align: -3px;
-            margin-right: 4px;
-          }
-        }
-      }
-    }
-    .user-list {
-      padding: 0 20px;
-      margin-top: 20px;
-      li {
-        height: 40px;
-        line-height: 40px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-        .van-icon-arrow {
-          margin-top: 13px;
-        }
-      }
-    }
-  }
+<style scoped>
+.info {
+    text-align: center;
+    padding: 35px 0;
+}
+.info-image {
+    position: relative;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.info-image img {
+    width: 100%;
+    height: 100%;
+}
+.info-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.info-edit i {
+    color: #eee;
+    font-size: 25px;
+}
+.info-image:hover .info-edit {
+    opacity: 1;
+}
+.info-name {
+    margin: 15px 0 10px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #262626;
+}
+.crop-demo-btn {
+    position: relative;
+}
+.crop-input {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
 </style>
